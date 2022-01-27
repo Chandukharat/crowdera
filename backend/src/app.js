@@ -68,7 +68,7 @@ app.post ("/Regi", upload.single('file'), async (req,res)=>{
 
             const msg = {
                 to: req.body.Email, 
-                from: 'kharatc187@gmail.com', 
+                from: 'vijayshankarkharat1111@gmail.com', 
                 subject: 'Sending with SendGrid is Fun',
                 text: 'and easy to do anywhere, even with Node.js',
                 html:`<a href=http://localhost:3000/verify/${id}>Verify</a>`,
