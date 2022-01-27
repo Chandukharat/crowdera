@@ -1,6 +1,7 @@
+require('dotenv').config()
 const express = require("express")
 const sgMail = require('@sendgrid/mail')
-sgMail.setApiKey("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")
+sgMail.setApiKey(process.env.SECRET_KEY)
 const app = express()
 const multer = require('multer')
 require("./db/conn")
