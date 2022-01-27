@@ -16,7 +16,7 @@ const path = require("path");
  const port = 8001;
  app.use(cors())
 app.use(express.json());
-app.use('/uploads', express.static('uploads'));
+
 
 
 
