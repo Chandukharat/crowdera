@@ -1,3 +1,4 @@
+const cors=require('cors')
 require('dotenv').config()
 const express = require("express")
 const sgMail = require('@sendgrid/mail')
@@ -10,8 +11,10 @@ const bcrypt = require ("bcryptjs")
 const path = require("path");
 
 
+
  
  const port = 8001;
+ app.use(cors())
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
@@ -52,12 +55,12 @@ const storage = multer.diskStorage({
 }))
 
 app.post ("/Regi", upload.single('file'), async (req,res)=>{ 
-    console.log(req.body)
+  
     const p = req.body.Password
     const cp = req.body.Confirm 
     const file = req.file.filename;
 
-    console.log(req.file)
+  
     
      if(p===cp){  
          
@@ -99,7 +102,6 @@ app.post ("/Regi", upload.single('file'), async (req,res)=>{
             const p =  req.body.Password
             const Usermail = await Regi.findOne({Email:Email})
             const isMatch = await bcrypt.compare(p,Usermail.Password)
-            console.log(p)
             console.log(Usermail.Password)
             console.log(isMatch)
             
