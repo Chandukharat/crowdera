@@ -1,27 +1,24 @@
-import axios from 'axios';
-import React from 'react';
-import { useNavigate, useParams } from 'react-router';
+import axios from "axios";
+import React from "react";
+import style from "./style.css";
+import { useNavigate, useParams } from "react-router";
 
 const Verify = () => {
   let navigate = useNavigate();
-    const { id } = useParams();
+  const { id } = useParams();
 
-    const verifyEmail = ()=>{
+  const verifyEmail = () => {
+    axios.put(`http://localhost:8001/verify/${id}`).then((x) => {
+      alert("Email Verified Successfully");
+      navigate("/");
+    });
+  };
 
-      axios.put(`http://localhost:8001/verify/${id}`).then((x)=>{
-        alert("Email Verified Successfully")
-        navigate("/")
-
-      })
-
-
-    }
-
-  return (<>
-
-  <button onClick={()=>verifyEmail()}>Verify Email</button>
-      
-  </>);
+  return (
+    <>
+      <button class="container" class="btn btn-warning" onClick={() => verifyEmail()}>Verify Email</button>
+    </>
+  );
 };
 
 export default Verify;

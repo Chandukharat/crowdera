@@ -23,10 +23,10 @@ function Login() {
       .post("http://localhost:8001/login", data)
       .then((x) => {
         console.log("login data", x.data);
-
-        navigate("/all");
         localStorage.setItem("author", x.data.Usermail.username);
         localStorage.setItem("file", x.data.Usermail.file);
+        navigate("/all");
+       
       })
       .catch((e) => {
         if (e.message == "Request failed with status code 300") {
